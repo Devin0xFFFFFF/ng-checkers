@@ -10,6 +10,7 @@ pubspec.lock # (Remove this pattern if you wish to check in your lock file)
 *.part.js
 *.js.deps
 *.js.map
+/pubspec.lock
 *.info.json
 
 # Directory created by dartdoc
