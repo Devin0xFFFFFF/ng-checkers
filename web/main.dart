@@ -3,7 +3,7 @@
 
 import 'package:angular2/platform/browser.dart';
 
-import 'package:ng_checkers/app_component.dart';
+import 'package:ng_checkers/app/app_component.dart';
 
 main() {
   bootstrap(AppComponent);
