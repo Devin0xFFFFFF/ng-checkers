@@ -1,0 +1,19 @@
+<div class="container well">
+    <div class="row" *ngFor="#row of board.board; #r = index">
+        <div class="col-sm-1"
+             (dragenter)="dragEnter($event, col, r, c)"
+             (dragleave)="dragLeave($event, col, r, c)"
+             [style.height.em]="6"
+             [style.background-color]="col.color"
+             [style.border]="'1px solid black'"
+             *ngFor="#col of row; #c = index">
+            <span *ngIf="col.piece != null"
+                  draggable="true"
+                  (dragstart)="dragStart($event, col, r, c)"
+                  (dragend)="dragEnd($event, col, r, c)"
+                  class="glyphicon glyphicon-record"
+                  [style.font-size.em]="5"
+                  [style.color]="col.piece.color"></span>
+        </div>
+    </div>
+</div>
