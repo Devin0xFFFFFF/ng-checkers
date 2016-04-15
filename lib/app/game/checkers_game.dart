@@ -3,11 +3,16 @@
 
 import 'package:angular2/angular2.dart';
 import 'package:ng_checkers/app/game/board_component.dart';
+import 'package:ng_checkers/app/game/checkers_service.dart';
 
 @Component(selector: 'ck-game',
     templateUrl: 'game_component.html',
-    directives: const [COMMON_DIRECTIVES, BoardComponent])
+    directives: const [COMMON_DIRECTIVES, BoardComponent],
+    providers: const [CheckersService])
 class GameComponent
 {
+  GameComponent()
+  {
 
+  }
 }

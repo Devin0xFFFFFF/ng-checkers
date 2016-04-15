@@ -1,17 +1,20 @@
 <div class="container well">
-    <div class="row" *ngFor="#row of board.board; #r = index">
+    <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
         <div class="col-sm-1"
              (dragenter)="dragEnter($event, col, r, c)"
+             (dragover)="dragOver($event, col, r, c)"
              (dragleave)="dragLeave($event, col, r, c)"
              [style.height.em]="6"
-             [style.background-color]="col.color"
+             [style.background-color]="col.selected ? 'green' : col.color"
              [style.border]="'1px solid black'"
              *ngFor="#col of row; #c = index">
             <span *ngIf="col.piece != null"
-                  draggable="true"
+                  [draggable]="checkersService.currentPlayer == col.piece.owner"
                   (dragstart)="dragStart($event, col, r, c)"
                   (dragend)="dragEnd($event, col, r, c)"
-                  class="glyphicon glyphicon-record"
+                  class="glyphicon"
+                  [class.glyphicon-record]="!col.piece.king"
+                  [class.glyphicon-king]="col.piece.king"
                   [style.font-size.em]="5"
                   [style.color]="col.piece.color"></span>
         </div>
