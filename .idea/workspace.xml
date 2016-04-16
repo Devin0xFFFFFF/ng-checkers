@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9dae7cdd-60d4-44bf-a67b-965122e8ea87" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/app/game/checkers_service.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/app_component.html" afterPath="$PROJECT_DIR$/lib/app/app_component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/game/board_component.dart" afterPath="$PROJECT_DIR$/lib/app/game/board_component.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/game/board_component.html" afterPath="$PROJECT_DIR$/lib/app/game/board_component.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/game/checkers_board.dart" afterPath="$PROJECT_DIR$/lib/app/game/checkers_board.dart" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/game/checkers_game.dart" afterPath="$PROJECT_DIR$/lib/app/game/checkers_game.dart" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/app/game/game_component.html" afterPath="$PROJECT_DIR$/lib/app/game/game_component.html" />
     </list>
     <ignored path="ng-checkers.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +45,24 @@
       <file leaf-file-name="checkers_game.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_game.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+            <state relative-caret-position="255">
+              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
               <folding>
-                <element signature="e#0#544#0" expanded="true" />
+                <element signature="e#0#600#0" expanded="true" />
                 <element signature="e#159#199#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/app/game/game_component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,8 +71,8 @@
       <file leaf-file-name="checkers_service.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_service.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="29" column="42" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="42" />
+            <state relative-caret-position="510">
+              <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -66,13 +80,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board_component.dart" pinned="false" current-in-tab="false">
+      <file leaf-file-name="board_component.dart" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+            <state relative-caret-position="131">
+              <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
               <folding>
-                <element signature="e#0#2737#0" expanded="true" />
+                <element signature="e#0#4258#0" expanded="true" />
                 <element signature="e#159#199#0" expanded="true" />
               </folding>
             </state>
@@ -82,18 +96,18 @@
       <file leaf-file-name="board_component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            <state relative-caret-position="323">
+              <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="checkers_board.dart" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkers_board.dart" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_board.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1261">
-              <caret line="85" column="74" selection-start-line="85" selection-start-column="74" selection-end-line="85" selection-end-column="74" />
+            <state relative-caret-position="204">
+              <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -123,16 +137,16 @@
         <option value="$PROJECT_DIR$/test/app/app_component_test.dart" />
         <option value="$PROJECT_DIR$/lib/app/pages/checkers_game.dart" />
         <option value="$PROJECT_DIR$/lib/app/pages/checkers_game_apge.dart" />
-        <option value="$PROJECT_DIR$/lib/app/game/game_component.html" />
         <option value="$PROJECT_DIR$/lib/app/pages/checkers_game_page.html" />
         <option value="$PROJECT_DIR$/lib/app/app_component.dart" />
         <option value="$PROJECT_DIR$/lib/app/pages/checkers_game_page.dart" />
-        <option value="$PROJECT_DIR$/lib/app/app_component.html" />
         <option value="$PROJECT_DIR$/web/index.html" />
-        <option value="$PROJECT_DIR$/lib/app/game/checkers_game.dart" />
-        <option value="$PROJECT_DIR$/lib/app/game/board_component.html" />
-        <option value="$PROJECT_DIR$/lib/app/game/checkers_board.dart" />
         <option value="$PROJECT_DIR$/lib/app/game/checkers_service.dart" />
+        <option value="$PROJECT_DIR$/lib/app/game/checkers_game.dart" />
+        <option value="$PROJECT_DIR$/lib/app/game/game_component.html" />
+        <option value="$PROJECT_DIR$/lib/app/app_component.html" />
+        <option value="$PROJECT_DIR$/lib/app/game/checkers_board.dart" />
+        <option value="$PROJECT_DIR$/lib/app/game/board_component.html" />
         <option value="$PROJECT_DIR$/lib/app/game/board_component.dart" />
       </list>
     </option>
@@ -174,7 +188,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -303,6 +316,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -402,7 +416,8 @@
       <workItem from="1460513045430" duration="14000" />
       <workItem from="1460591197313" duration="867000" />
       <workItem from="1460592137659" duration="6898000" />
-      <workItem from="1460678379222" duration="10803000" />
+      <workItem from="1460678379222" duration="10911000" />
+      <workItem from="1460759702814" duration="7002000" />
     </task>
     <task id="LOCAL-00001" summary="Switched to base Dart Angular 2 Code.">
       <created>1460320460142</created>
@@ -446,22 +461,29 @@
       <option name="project" value="LOCAL" />
       <updated>1460601563640</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added movement restrictions, turns, basic jumping, kinging.">
+      <created>1460689227009</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1460689227009</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20886000" />
+    <option name="totallyTimeSpent" value="27996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18018967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Pub Serve" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Dart Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32719395" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -518,15 +540,64 @@
     <MESSAGE value="Added base files." />
     <MESSAGE value="Added Dart testing sample code." />
     <MESSAGE value="Created the base board, added drag and drop support for manipulating the board." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the base board, added drag and drop support for manipulating the board." />
+    <MESSAGE value="Added movement restrictions, turns, basic jumping, kinging." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added movement restrictions, turns, basic jumping, kinging." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_game.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#600#0" expanded="true" />
+            <element signature="e#159#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_service.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#4258#0" expanded="true" />
+            <element signature="e#159#199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_board.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -543,7 +614,7 @@
         <state relative-caret-position="119">
           <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding>
-            <element signature="e#0#544#0" expanded="true" />
+            <element signature="e#0#600#0" expanded="true" />
             <element signature="e#159#199#0" expanded="true" />
           </folding>
         </state>
@@ -554,7 +625,7 @@
         <state relative-caret-position="1105">
           <caret line="68" column="56" selection-start-line="68" selection-start-column="56" selection-end-line="68" selection-end-column="56" />
           <folding>
-            <element signature="e#0#2737#0" expanded="true" />
+            <element signature="e#0#4258#0" expanded="true" />
             <element signature="e#159#199#0" expanded="true" />
           </folding>
         </state>
@@ -727,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/app_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/app/pages/checkers_game_page.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -741,24 +805,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/app_component.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/app/pages/checkers_game_page.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="19" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/game/game_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="10" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -778,14 +828,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_game.dart">
+    <entry file="file://$PROJECT_DIR$/lib/app/app_component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#544#0" expanded="true" />
-            <element signature="e#159#199#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/app_component.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -800,22 +855,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_service.dart">
+    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_game.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="29" column="42" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="42" />
+        <state relative-caret-position="255">
+          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#2737#0" expanded="true" />
+            <element signature="e#0#600#0" expanded="true" />
             <element signature="e#159#199#0" expanded="true" />
           </folding>
         </state>
@@ -823,17 +868,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+        <state relative-caret-position="323">
+          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/game_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_service.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="53" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/app/game/checkers_board.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1261">
-          <caret line="85" column="74" selection-start-line="85" selection-start-column="74" selection-end-line="85" selection-end-column="74" />
+        <state relative-caret-position="204">
+          <caret line="27" column="35" selection-start-line="27" selection-start-column="35" selection-end-line="27" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app/game/board_component.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="110" column="26" selection-start-line="110" selection-start-column="26" selection-end-line="110" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#4258#0" expanded="true" />
+            <element signature="e#159#199#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

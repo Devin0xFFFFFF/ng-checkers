@@ -1,4 +1,5 @@
 <div class="container well">
+    <h3 *ngIf="continueJump">Continue Jump</h3>
     <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
         <div class="col-sm-1"
              (dragenter)="dragEnter($event, col, r, c)"

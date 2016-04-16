@@ -11,7 +11,9 @@ import 'package:ng_checkers/app/game/checkers_service.dart';
     providers: const [CheckersService])
 class GameComponent
 {
-  GameComponent()
+  CheckersService checkersService;
+
+  GameComponent(this.checkersService)
   {
 
   }

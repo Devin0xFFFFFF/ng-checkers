@@ -127,6 +127,76 @@ class CheckersBoard {
     return r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE;
   }
 
+  getPossibleMoves(Player player)
+  {
+    for(int r = 0; r < BOARD_SIZE; r++)
+    {
+      for(int c = 0; c < BOARD_SIZE; c++)
+      {
+        BoardSquare square = board[r][c];
+
+      }
+    }
+  }
+
+  List<Position> possibleJumpsFrom(int r, int c)
+  {
+    List <Position> possibleJumps = [];
+
+    if(!onBoard(r, c))
+    {
+      throw new Exception('Location $r, $c is not on the board!');
+    }
+
+    if(!board[r][c].occupied())
+    {
+      throw new Exception('No piece at location $r, $c !');
+    }
+
+    BoardSquare square = board[r][c];
+
+    int direction = square.piece.owner.color == "blue" ? 1 : -1;
+
+    if(square.piece.king)
+    {
+      _addPositionIfValid(possibleJumps, r, c, -2, -2);
+      _addPositionIfValid(possibleJumps, r, c, -2, 2);
+      _addPositionIfValid(possibleJumps, r, c, 2, -2);
+      _addPositionIfValid(possibleJumps, r, c, 2, 2);
+    }
+    else
+    {
+      if(direction == 1)
+      {
+        _addPositionIfValid(possibleJumps, r, c, -2, -2);
+        _addPositionIfValid(possibleJumps, r, c, -2, 2);
+      }
+      else
+      {
+        _addPositionIfValid(possibleJumps, r, c, 2, -2);
+        _addPositionIfValid(possibleJumps, r, c, 2, 2);
+      }
+    }
+
+    return possibleJumps;
+  }
+
+  _addPositionIfValid(List<Position> positions, int r, int c, int deltaR, int deltaC)
+  {
+    //If position is ont he board and not occupied
+    int rJump = r + deltaR;
+    int cJump = c + deltaC;
+    if(onBoard(rJump, cJump) && !board[rJump][cJump].occupied())
+    {
+      //check if intermediate square is occupied and is not the same colored piece as ours
+      BoardSquare square = board[r + (deltaR/2).toInt()][c + (deltaC/2).toInt()];
+      if(square.occupied() && square.piece.owner != board[r][c].piece.owner)
+      {
+        positions.add(new Position(rJump, cJump));
+      }
+    }
+  }
+
   List<List<BoardSquare>> _createBoard() {
     List boardRows = new List<List<BoardSquare>>();
 
@@ -213,4 +283,11 @@ class Player
   {
     return board.movePiece(originRow, originCol, targetRow, targetCol);
   }
+}
+
+class Position
+{
+  int row, col;
+
+  Position(this.row, this.col) {}
 }
