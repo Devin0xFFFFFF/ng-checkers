@@ -13,7 +13,7 @@ class CheckersService
 
   Player currentPlayer;
 
-  List<Move> possibleCurrentMoves;
+  Moves possibleCurrentMoves;
 
   bool gameOver;
   Player winner;
@@ -43,7 +43,7 @@ class CheckersService
 
     possibleCurrentMoves = board.getPossibleMoves(currentPlayer);
 
-    if(possibleCurrentMoves.isEmpty)
+    if(possibleCurrentMoves.outOfMoves())
     {
       gameOver = true;
       winner = currentPlayer == player1 ? player2 : player1;
@@ -52,16 +52,15 @@ class CheckersService
 
   bool validMove(Move move)
   {
-    bool valid = false;
-    int i = 0;
+    //if there is an available jump, we must take it, otherwise can take normal move
+    return possibleCurrentMoves.hasJumps() ? possibleCurrentMoves.validJump(move) : possibleCurrentMoves.validMove(move);
+  }
 
-    while(i < possibleCurrentMoves.length && !valid)
-    {
-      valid = possibleCurrentMoves[i].equals(move);
-      i++;
-    }
+  bool validRawMove(int originR, int originC, int targetR, int targetC)
+  {
+    Move move = new Move(new Position(originR, originC), new Position(targetR, targetC));
 
-    return valid;
+    return validMove(move);
   }
 
   resetGame()

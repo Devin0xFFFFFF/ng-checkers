@@ -112,9 +112,9 @@ class CheckersBoard {
     return r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE;
   }
 
-  List<Move> getPossibleMoves(Player player)
+  Moves getPossibleMoves(Player player)
   {
-    List<Move> possibleMoves = [];
+    Moves possibleMoves = new Moves();
 
     for(int r = 0; r < BOARD_SIZE; r++)
     {
@@ -126,18 +126,23 @@ class CheckersBoard {
         if(square.occupied() && player == square.piece.owner)
         {
           //find all possible jumps and moves
-          List<Position> jumps = possibleJumpsFrom(r, c);
-          List<Position> moves = possibleMovesFrom(r, c);
+          List<Position> jumpPositions = possibleJumpsFrom(r, c);
+          List<Position> movePoistions = possibleMovesFrom(r, c);
 
+          List<Move> jumps = [];
+          List<Move> moves = [];
 
           //append each as a new move from (r, c) to the target position
-          jumps.forEach((Position pos){
-            possibleMoves.add(new Move(currentPosition, pos));
+          jumpPositions.forEach((Position pos){
+            jumps.add(new Move(currentPosition, pos));
           });
 
-          moves.forEach((Position pos){
-            possibleMoves.add(new Move(currentPosition, pos));
+          movePoistions.forEach((Position pos){
+            moves.add(new Move(currentPosition, pos));
           });
+
+          possibleMoves.addJumps(jumps);
+          possibleMoves.addMoves(moves);
         }
       }
     }
@@ -347,5 +352,75 @@ class Move
   toString()
   {
     return "Move From $origin To $destination";
+  }
+}
+
+class Moves
+{
+  List<Move> jumps;
+  List<Move> moves;
+
+  Moves()
+  {
+    jumps = [];
+    moves = [];
+  }
+
+  addJumps(List<Move> jumps)
+  {
+    this.jumps.addAll(jumps);
+  }
+
+  addMoves(List<Move> moves)
+  {
+    this.moves.addAll(moves);
+  }
+
+  bool hasJumps()
+  {
+    return jumps.isNotEmpty;
+  }
+
+  bool hasMoves()
+  {
+    return moves.isNotEmpty;
+  }
+
+  bool outOfMoves()
+  {
+    return !hasJumps() && !hasMoves();
+  }
+
+  bool validJump(Move move)
+  {
+    bool valid = false;
+    int i = 0;
+
+    while(i < jumps.length && !valid)
+    {
+      valid = jumps[i].equals(move);
+      i++;
+    }
+
+    return valid;
+  }
+
+  bool validMove(Move move)
+  {
+    bool valid = false;
+    int i = 0;
+
+    while(i < moves.length && !valid)
+    {
+      valid = moves[i].equals(move);
+      i++;
+    }
+
+    return valid;
+  }
+
+  List<Move> getAllPossibleMoves()
+  {
+    return hasJumps() ? jumps : moves;
   }
 }

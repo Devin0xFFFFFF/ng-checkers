@@ -32,6 +32,7 @@ class BoardComponent
   dragStart(MouseEvent event, BoardSquare origin, int r, int c)
   {
     //Make sure the current player is the only one who can move
+
     if(checkersService.currentPlayer == origin.piece.owner)
     {
       //only select a different tile if the move is resolved
@@ -108,9 +109,9 @@ class BoardComponent
     if(dragTarget != null && !dragTarget.occupied())
     {
       //print("VALID @ $r, $c");
-      bool validPos = true;
+      bool validPos = checkersService.validRawMove(originPos[0], originPos[1], targetPos[0], targetPos[1]);
       //check against the possible positions to see if you are attempting to move to a valid place
-      if(continueJump)
+      if(validPos && continueJump)
       {
         List<Position> possibleJumpPositions = checkersService.board.possibleJumpsFrom(originPos[0], originPos[1]);
         validPos = false;

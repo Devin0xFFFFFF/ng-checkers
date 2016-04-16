@@ -1,6 +1,7 @@
 <div class="container well">
     <div>
         <h3 *ngIf="continueJump">Continue Jump</h3>
+        <h3 *ngIf="checkersService.possibleCurrentMoves.hasJumps()">Must Make Jump</h3>
         <h3 *ngIf="checkersService.gameOver">Game Over! {{checkersService.winner.color}} Wins!</h3>
         <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
             <div class="col-sm-1"
