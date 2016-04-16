@@ -78,7 +78,7 @@ class BoardComponent
   dragOver(MouseEvent event, BoardSquare square, int r, int c)
   {
     //For unoccupied tiles, prevent default so cursor can change to copy
-    if(!square.occupied())
+    if(!square.occupied() &&  checkersService.validMove(new Move(new Position(originPos[0], originPos[1]), new Position(r, c))))
     {
       event.preventDefault();
     }

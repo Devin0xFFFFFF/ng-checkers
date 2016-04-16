@@ -1,4 +1,5 @@
 import 'package:ng_checkers/app/game/checkers_service.dart';
+import 'package:ng_checkers/app/game/player.dart';
 
 class CheckersBoard {
   int BOARD_SIZE = 8;
@@ -102,22 +103,6 @@ class CheckersBoard {
       result = player.color == "blue" ? deltaR < 0 : deltaR > 0;
     }
 
-    //do move
-
-    //result = inRange(player1, king, originRow, originCol, targetRow, targetCol);
-
-//    if(!result)
-//    {
-//      BoardSquare jumpTarget = attemptJump(player1, king, originRow, originCol, targetRow, targetCol);
-//      result = jumpTarget != null;
-//    }
-
-    //TODO: remove any pieces, check for an additional move
-
-    //TODO: check for king-ing
-
-    //TODO: check for win condition
-
     return result;
   }
 
@@ -127,15 +112,75 @@ class CheckersBoard {
     return r >= 0 && r < BOARD_SIZE && c >= 0 && c < BOARD_SIZE;
   }
 
-  getPossibleMoves(Player player)
+  List<Move> getPossibleMoves(Player player)
   {
+    List<Move> possibleMoves = [];
+
     for(int r = 0; r < BOARD_SIZE; r++)
     {
       for(int c = 0; c < BOARD_SIZE; c++)
       {
         BoardSquare square = board[r][c];
+        Position currentPosition = new Position(r, c);
+        //If the current player owns the piece, check for moves
+        if(square.occupied() && player == square.piece.owner)
+        {
+          //find all possible jumps and moves
+          List<Position> jumps = possibleJumpsFrom(r, c);
+          List<Position> moves = possibleMovesFrom(r, c);
 
+
+          //append each as a new move from (r, c) to the target position
+          jumps.forEach((Position pos){
+            possibleMoves.add(new Move(currentPosition, pos));
+          });
+
+          moves.forEach((Position pos){
+            possibleMoves.add(new Move(currentPosition, pos));
+          });
+        }
       }
+    }
+
+    return possibleMoves;
+  }
+
+  List<Position> possibleMovesFrom(int r, int c)
+  {
+    BoardSquare square = board[r][c];
+    int direction = square.piece.owner.color == "blue" ? 1 : -1;
+
+    List<Position> possiblePositions = [];
+
+    if(square.piece.king)
+    {
+      _addMovePositionIfValid(possiblePositions, r - 1, c - 1);
+      _addMovePositionIfValid(possiblePositions, r - 1, c + 1);
+      _addMovePositionIfValid(possiblePositions, r + 1, c - 1);
+      _addMovePositionIfValid(possiblePositions, r + 1, c + 1);
+    }
+    else
+    {
+      if(direction == 1)
+      {
+        _addMovePositionIfValid(possiblePositions, r - 1, c - 1);
+        _addMovePositionIfValid(possiblePositions, r - 1, c + 1);
+      }
+      else
+      {
+        _addMovePositionIfValid(possiblePositions, r + 1, c - 1);
+        _addMovePositionIfValid(possiblePositions, r + 1, c + 1);
+      }
+    }
+
+    return possiblePositions;
+  }
+
+  _addMovePositionIfValid(List<Position> positions, int r, int c)
+  {
+    if(onBoard(r, c) && !board[r][c].occupied())
+    {
+      positions.add(new Position(r, c));
     }
   }
 
@@ -159,29 +204,29 @@ class CheckersBoard {
 
     if(square.piece.king)
     {
-      _addPositionIfValid(possibleJumps, r, c, -2, -2);
-      _addPositionIfValid(possibleJumps, r, c, -2, 2);
-      _addPositionIfValid(possibleJumps, r, c, 2, -2);
-      _addPositionIfValid(possibleJumps, r, c, 2, 2);
+      _addJumpPositionIfValid(possibleJumps, r, c, -2, -2);
+      _addJumpPositionIfValid(possibleJumps, r, c, -2, 2);
+      _addJumpPositionIfValid(possibleJumps, r, c, 2, -2);
+      _addJumpPositionIfValid(possibleJumps, r, c, 2, 2);
     }
     else
     {
       if(direction == 1)
       {
-        _addPositionIfValid(possibleJumps, r, c, -2, -2);
-        _addPositionIfValid(possibleJumps, r, c, -2, 2);
+        _addJumpPositionIfValid(possibleJumps, r, c, -2, -2);
+        _addJumpPositionIfValid(possibleJumps, r, c, -2, 2);
       }
       else
       {
-        _addPositionIfValid(possibleJumps, r, c, 2, -2);
-        _addPositionIfValid(possibleJumps, r, c, 2, 2);
+        _addJumpPositionIfValid(possibleJumps, r, c, 2, -2);
+        _addJumpPositionIfValid(possibleJumps, r, c, 2, 2);
       }
     }
 
     return possibleJumps;
   }
 
-  _addPositionIfValid(List<Position> positions, int r, int c, int deltaR, int deltaC)
+  _addJumpPositionIfValid(List<Position> positions, int r, int c, int deltaR, int deltaC)
   {
     //If position is ont he board and not occupied
     int rJump = r + deltaR;
@@ -267,27 +312,40 @@ class BoardPiece
   }
 }
 
-class Player
-{
-  String name;
-  String color;
-  CheckersBoard board;
-  int pieces;
-
-  Player(this.name, this.color, this.board)
-  {
-    pieces = 0;
-  }
-
-  bool makeMove(int originRow, int originCol, int targetRow, int targetCol)
-  {
-    return board.movePiece(originRow, originCol, targetRow, targetCol);
-  }
-}
-
 class Position
 {
   int row, col;
 
   Position(this.row, this.col) {}
+
+  bool equals(Position other)
+  {
+    return row == other.row && col == other.col;
+  }
+
+  toString()
+  {
+    return "($row, $col)";
+  }
+}
+
+class Move
+{
+  Position origin;
+  Position destination;
+
+  Move(this.origin, this.destination)
+  {
+
+  }
+
+  bool equals(Move other)
+  {
+    return origin.equals(other.origin) && destination.equals(other.destination);
+  }
+
+  toString()
+  {
+    return "Move From $origin To $destination";
+  }
 }

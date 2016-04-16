@@ -1,5 +1,6 @@
 import 'package:angular2/angular2.dart';
 import 'package:ng_checkers/app/game/checkers_board.dart';
+import 'package:ng_checkers/app/game/player.dart';
 
 @Injectable()
 class CheckersService
@@ -12,17 +13,14 @@ class CheckersService
 
   Player currentPlayer;
 
+  List<Move> possibleCurrentMoves;
+
+  bool gameOver;
+  Player winner;
+
   CheckersService()
   {
-    turn = 1;
-
-    board = new CheckersBoard(this);
-
-    createPlayers("p1", "p2");
-
-    currentPlayer = player1;
-
-    board.addPieces();
+    initializeGame();
   }
 
   createPlayers(String player1Name, String player2Name)
@@ -33,26 +31,67 @@ class CheckersService
 
   takeTurn()
   {
-    if(!gameOver())
+    turn++;
+    if(currentPlayer == player1)
     {
-      turn++;
-      if(currentPlayer == player1)
-      {
-        currentPlayer = player2;
-      }
-      else
-      {
-        currentPlayer = player1;
-      }
+      currentPlayer = player2;
     }
     else
     {
-      print("GAME OVER!!!");
+      currentPlayer = player1;
+    }
+
+    possibleCurrentMoves = board.getPossibleMoves(currentPlayer);
+
+    if(possibleCurrentMoves.isEmpty)
+    {
+      gameOver = true;
+      winner = currentPlayer == player1 ? player2 : player1;
     }
   }
 
-  bool gameOver()
+  bool validMove(Move move)
   {
-    return player1.pieces <= 0 || player2.pieces <= 0;
+    bool valid = false;
+    int i = 0;
+
+    while(i < possibleCurrentMoves.length && !valid)
+    {
+      valid = possibleCurrentMoves[i].equals(move);
+      i++;
+    }
+
+    return valid;
   }
+
+  resetGame()
+  {
+    initializeGame();
+  }
+
+  initializeGame()
+  {
+    turn = 1;
+    gameOver = false;
+
+    //create the initial board
+    board = new CheckersBoard(this);
+
+    //create players
+    createPlayers("p1", "p2");
+
+    //start with player1
+    currentPlayer = player1;
+
+    //add all pieces for the two players to the board
+    board.addPieces();
+
+    //get the possible moves for turn 1
+    possibleCurrentMoves = board.getPossibleMoves(currentPlayer);
+  }
+
+//  bool gameOver()
+//  {
+//    return player1.pieces <= 0 || player2.pieces <= 0;
+//  }
 }

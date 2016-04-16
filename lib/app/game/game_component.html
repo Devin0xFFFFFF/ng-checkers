@@ -1,11 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
-            <span style="font-size: 5em">Checkers</span>
+            <div style="height: 11em; display: table-cell; vertical-align: bottom;">
+                <span style="font-size: 5em">Checkers</span>
+            </div>
         </div>
         <div class="col-lg-8">
-            <span style="font-size: 3em">Turn: {{checkersService.turn}} Player: {{checkersService.currentPlayer.color}}</span>
+            <div style="height: 10em; display: table-cell; vertical-align: bottom;">
+                <span style="font-size: 3em;">Turn: {{checkersService.turn}} Player: {{checkersService.currentPlayer.color}}</span>
+            </div>
+
         </div>
     </div>
 </div>
 <ck-board></ck-board>
+
+<div class="container">
+    <button class="btn btn-primary" (click)="resetGame()">Reset</button>
+</div>

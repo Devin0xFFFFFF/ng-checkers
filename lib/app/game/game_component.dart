@@ -11,10 +11,17 @@ import 'package:ng_checkers/app/game/checkers_service.dart';
     providers: const [CheckersService])
 class GameComponent
 {
+  @Input() bool ai = false;
+
   CheckersService checkersService;
 
   GameComponent(this.checkersService)
   {
 
+  }
+
+  resetGame()
+  {
+    checkersService.resetGame();
   }
 }

@@ -1,14 +1,16 @@
 <div class="container well">
-    <h3 *ngIf="continueJump">Continue Jump</h3>
-    <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
-        <div class="col-sm-1"
-             (dragenter)="dragEnter($event, col, r, c)"
-             (dragover)="dragOver($event, col, r, c)"
-             (dragleave)="dragLeave($event, col, r, c)"
-             [style.height.em]="6"
-             [style.background-color]="col.selected ? 'green' : col.color"
-             [style.border]="'1px solid black'"
-             *ngFor="#col of row; #c = index">
+    <div>
+        <h3 *ngIf="continueJump">Continue Jump</h3>
+        <h3 *ngIf="checkersService.gameOver">Game Over! {{checkersService.winner.color}} Wins!</h3>
+        <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
+            <div class="col-sm-1"
+                 (dragenter)="dragEnter($event, col, r, c)"
+                 (dragover)="dragOver($event, col, r, c)"
+                 (dragleave)="dragLeave($event, col, r, c)"
+                 [style.height.em]="6"
+                 [style.background-color]="col.selected ? 'green' : col.color"
+                 [style.border]="'1px solid black'"
+                 *ngFor="#col of row; #c = index">
             <span *ngIf="col.piece != null"
                   [draggable]="checkersService.currentPlayer == col.piece.owner"
                   (dragstart)="dragStart($event, col, r, c)"
@@ -18,6 +20,7 @@
                   [class.glyphicon-king]="col.piece.king"
                   [style.font-size.em]="5"
                   [style.color]="col.piece.color"></span>
+            </div>
         </div>
     </div>
 </div>
