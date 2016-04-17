@@ -12,8 +12,8 @@ class Player
     pieces = 0;
   }
 
-  bool makeMove(int originRow, int originCol, int targetRow, int targetCol)
+  bool makeMove(Move move)
   {
-    return board.movePiece(originRow, originCol, targetRow, targetCol);
+    return board.movePiece(move);
   }
 }

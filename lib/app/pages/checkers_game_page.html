@@ -1,1 +1,39 @@
-<ck-game></ck-game>
+<div class="container" *ngIf="versusAI == null">
+    <h1>Play Checkers</h1>
+
+    <div>
+        <h3>Game Modes:</h3>
+        <button class="btn btn-primary" (click)="setVersusAI(false)">Local Versus Human</button>
+        <button class="btn btn-primary" (click)="setVersusAI(true)">Local Versus AI</button>
+    </div>
+
+    <div style="margin-top: 2em">
+        <h3>Starting Player:</h3>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-danger" [class.active]="startingPlayer == 'Red'" (click)="setStartingPlayer('Red')">
+                Red
+            </label>
+            <label class="btn btn-primary" [class.active]="startingPlayer == 'Blue'" (click)="setStartingPlayer('Blue')">
+                Blue
+            </label>
+            <label class="btn btn-info" [class.active]="startingPlayer == 'Random'" (click)="setStartingPlayer('Random')">
+                Random
+            </label>
+        </div>
+        <span style="font-size: 2em; margin-left: 2em">{{startingPlayer}}</span>
+    </div>
+
+    <h3>Rules:</h3>
+    <div style="margin-top: 2em">
+        <ol style="font-size: 1.5em">
+            <li *ngFor="#rule of rulesText">
+                <span>{{rule}}</span>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="container" *ngIf="versusAI != null">
+    <ck-game [versusAI]="versusAI" [startingPlayer]="startingPlayer"></ck-game>
+    <button class="btn btn-primary" (click)="setVersusAI(null)">Reset Game</button>
+</div>

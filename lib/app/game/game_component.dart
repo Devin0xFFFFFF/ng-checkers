@@ -9,9 +9,10 @@ import 'package:ng_checkers/app/game/checkers_service.dart';
     templateUrl: 'game_component.html',
     directives: const [COMMON_DIRECTIVES, BoardComponent],
     providers: const [CheckersService])
-class GameComponent
+class GameComponent implements OnInit
 {
-  @Input() bool ai = false;
+  @Input() bool versusAI;
+  @Input() String startingPlayer;
 
   CheckersService checkersService;
 
@@ -23,5 +24,13 @@ class GameComponent
   resetGame()
   {
     checkersService.resetGame();
+  }
+
+  @override
+  ngOnInit()
+  {
+    checkersService.versusAI = versusAI;
+    checkersService.startingPlayer = startingPlayer;
+    checkersService.initializeGame();
   }
 }

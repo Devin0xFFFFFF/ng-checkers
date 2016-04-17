@@ -14,8 +14,8 @@ class BoardComponent
   BoardSquare dragOrigin;
   BoardSquare dragTarget, tempDragTarget;
 
-  List<int> originPos;
-  List<int> targetPos;
+  Position originPos;
+  Position targetPos;
 
   CheckersService checkersService;
 
@@ -23,8 +23,8 @@ class BoardComponent
 
   BoardComponent(this.checkersService)
   {
-    originPos = [0, 0];
-    targetPos = [0, 0];
+    originPos = new Position(0,0);
+    targetPos = new Position(0,0);
 
     continueJump = false;
   }
@@ -40,8 +40,8 @@ class BoardComponent
       {
         dragOrigin = origin;
         //Save origin position on board
-        originPos[0] = r;
-        originPos[1] = c;
+        originPos.row = r;
+        originPos.col = c;
         dragOrigin.selected = true;
       }
 
@@ -67,8 +67,8 @@ class BoardComponent
     {
       //print("VACANT @ $r, $c");
       tempDragTarget = square;
-      targetPos[0] = r;
-      targetPos[1] = c;
+      targetPos.row = r;
+      targetPos.col = c;
       event.dataTransfer.dropEffect = "copy";
 //      dragTarget = square;
     }
@@ -79,7 +79,7 @@ class BoardComponent
   dragOver(MouseEvent event, BoardSquare square, int r, int c)
   {
     //For unoccupied tiles, prevent default so cursor can change to copy
-    if(!square.occupied() &&  checkersService.validMove(new Move(new Position(originPos[0], originPos[1]), new Position(r, c))))
+    if(!square.occupied() &&  checkersService.validMove(new Move(originPos, new Position(r, c))))
     {
       event.preventDefault();
     }
@@ -109,15 +109,15 @@ class BoardComponent
     if(dragTarget != null && !dragTarget.occupied())
     {
       //print("VALID @ $r, $c");
-      bool validPos = checkersService.validRawMove(originPos[0], originPos[1], targetPos[0], targetPos[1]);
+      bool validPos = checkersService.validMove(new Move(originPos, targetPos));
       //check against the possible positions to see if you are attempting to move to a valid place
       if(validPos && continueJump)
       {
-        List<Position> possibleJumpPositions = checkersService.board.possibleJumpsFrom(originPos[0], originPos[1]);
+        List<Position> possibleJumpPositions = checkersService.board.possibleJumpsFrom(originPos);
         validPos = false;
         for(Position pos in possibleJumpPositions)
         {
-          validPos = pos.row == targetPos[0] && pos.col == targetPos[1];
+          validPos = pos.equals(targetPos);
           if(validPos)
           {
             break;
@@ -136,23 +136,27 @@ class BoardComponent
     }
   }
 
+  makeAIMove()
+  {
+    Moves moves = checkersService.possibleCurrentMoves;
+
+    
+  }
+
   makeMove()
   {
-    if(checkersService.board.movePiece(
-        originPos[0], originPos[1],
-        targetPos[0], targetPos[1]))
+    if(checkersService.board.movePiece(new Move(originPos, targetPos)))
     {
       //calculate distance to check if you moved > 1 tile, if so you have jumped
-      int colDistance = targetPos[1] - originPos[1];
+      int colDistance = targetPos.col - originPos.col;
       //Only check tiles if we have jumped
-      List<Position> possibleJumpsFrom = colDistance > 1 || colDistance < -1 ? checkersService.board.possibleJumpsFrom(targetPos[0], targetPos[1]) : [];
+      List<Position> possibleJumpsFrom = colDistance > 1 || colDistance < -1 ? checkersService.board.possibleJumpsFrom(targetPos) : [];
       if(possibleJumpsFrom.isNotEmpty)
       {
         print("CAN JUMP AGAIN");
         continueJump = true;
         //update origin to new position
-        originPos[0] = targetPos[0];
-        originPos[1] = targetPos[1];
+        originPos = targetPos.clone();
       }
       else
       {
