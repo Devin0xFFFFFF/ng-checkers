@@ -5,15 +5,19 @@ class Player
   String name;
   String color;
   CheckersBoard board;
-  int pieces;
 
   Player(this.name, this.color, this.board)
   {
-    pieces = 0;
+
   }
 
   bool makeMove(Move move)
   {
     return board.movePiece(move);
+  }
+
+  toString()
+  {
+    return color[0].toUpperCase() + color.substring(1);
   }
 }

@@ -33,7 +33,7 @@ class BoardComponent
   {
     //Make sure the current player is the only one who can move
 
-    if(checkersService.currentPlayer == origin.piece.owner)
+    if(checkersService.currentPlayer == origin.piece.owner && !checkersService.AITurn())
     {
       //only select a different tile if the move is resolved
       if(!continueJump)
@@ -53,7 +53,7 @@ class BoardComponent
 
   dragEnter(MouseEvent event, BoardSquare square, int r, int c)
   {
-    if(dragOrigin == null)
+    if(dragOrigin == null || checkersService.AITurn())
     {
       return;
     }
@@ -79,7 +79,7 @@ class BoardComponent
   dragOver(MouseEvent event, BoardSquare square, int r, int c)
   {
     //For unoccupied tiles, prevent default so cursor can change to copy
-    if(!square.occupied() &&  checkersService.validMove(new Move(originPos, new Position(r, c))))
+    if(!square.occupied() &&  checkersService.validMove(new Move(originPos, new Position(r, c))) && !checkersService.AITurn())
     {
       event.preventDefault();
     }
@@ -87,6 +87,11 @@ class BoardComponent
 
   dragLeave(MouseEvent event, BoardSquare square, int r, int c)
   {
+    if(checkersService.AITurn())
+    {
+      return;
+    }
+
     dragTarget?.selected = false;
     dragTarget = tempDragTarget;
     if(dragTarget != null)
@@ -99,7 +104,7 @@ class BoardComponent
 
   dragEnd(MouseEvent event, BoardSquare square, int r, int c)
   {
-    if(dragOrigin == null)
+    if(dragOrigin == null || checkersService.AITurn())
     {
       return;
     }
@@ -136,26 +141,17 @@ class BoardComponent
     }
   }
 
-  makeAIMove()
-  {
-    Moves moves = checkersService.possibleCurrentMoves;
-
-    
-  }
-
   makeMove()
   {
-    if(checkersService.board.movePiece(new Move(originPos, targetPos)))
+    Move move = new Move(originPos, targetPos);
+
+    if(checkersService.board.movePiece(move))
     {
-      //calculate distance to check if you moved > 1 tile, if so you have jumped
-      int colDistance = targetPos.col - originPos.col;
-      //Only check tiles if we have jumped
-      List<Position> possibleJumpsFrom = colDistance > 1 || colDistance < -1 ? checkersService.board.possibleJumpsFrom(targetPos) : [];
-      if(possibleJumpsFrom.isNotEmpty)
+      //if we can make another jump, continue turn, else end turn
+      if(checkersService.attemptContinueJumps(move))
       {
-        print("CAN JUMP AGAIN");
         continueJump = true;
-        //update origin to new position
+        //update origin to new jumped-to position
         originPos = targetPos.clone();
       }
       else
@@ -164,8 +160,6 @@ class BoardComponent
         checkersService.takeTurn();
       }
     }
-
-    print("MADE MOVE");
 
     //update the drag origin to be the new position
     if(continueJump)

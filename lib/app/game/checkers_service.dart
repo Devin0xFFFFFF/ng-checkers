@@ -102,6 +102,33 @@ class CheckersService
     });
   }
 
+  bool attemptContinueJumps(Move jumpMove)
+  {
+    //calculate distance to check if you moved > 1 tile, if so you have jumped
+    int colDistance = jumpMove.destination.col - jumpMove.origin.col;
+    //Only check tiles if we have jumped
+    List<Position> possibleJumpsFrom = colDistance > 1 || colDistance < -1 ? board.possibleJumpsFrom(jumpMove.destination) : [];
+
+    if(possibleJumpsFrom.isNotEmpty)
+    {
+      //set possibleMoves to be the Moves from the current jump position
+      Moves possibleMovesContinuingJump = new Moves();
+      possibleJumpsFrom.forEach((Position jumpPos){
+        possibleMovesContinuingJump.addJumps([new Move(jumpMove.destination, jumpPos)]);
+      });
+      possibleCurrentMoves = possibleMovesContinuingJump;
+
+      return true;
+    }
+
+    return false;
+  }
+
+  bool AITurn()
+  {
+    return versusAI && currentPlayer == player1;
+  }
+
   resetGame()
   {
     initializeGame();

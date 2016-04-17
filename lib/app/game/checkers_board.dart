@@ -278,11 +278,9 @@ class CheckersBoard {
         if (r % 2 != c % 2) {
           if (r < 3) {
             board[r][c].piece = new BoardPiece(checkersService.player1);
-            checkersService.player1.pieces++;
           }
           else if (r > 4) {
             board[r][c].piece = new BoardPiece(checkersService.player2);
-            checkersService.player2.pieces++;
           }
         }
       }
@@ -370,9 +368,10 @@ class Move
   Position origin;
   Position destination;
 
-  Move(this.origin, this.destination)
+  Move(Position originPos, Position destinationPos)
   {
-
+    origin = originPos.clone();
+    destination = destinationPos.clone();
   }
 
   bool equals(Move other)
