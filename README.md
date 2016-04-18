@@ -1,13 +1,31 @@
 # ng-checkers
 
-### Checkers created with Angular 2 and Dart
+### Checkers (Draughts) created with Angular 2 and Dart
+
+##About
+
+This project is an implementation of the game of checkers, also known as draughts, written in Dart using the Angular 2 framework.
+
+It supports both local versus play and a local versus AI mode.
+
+##Running This Project
+
+To run this project you will require a copy of the Dart SDK, which includes the pub package manager. The Download Page contains OS specific instructions.
+
+First, make sure to run pub get / pub upgrade in the project root to retrieve packages.
+
+Then, run pub build to compile Dart code to JavaScript. The generated JavaScript appears, along with supporting files, under the build directory.
+
+Run the index.html in the build directory from a browser to play the game.
 
 ##References
 
+- [Angular 2 Dart Reference Repo](https://github.com/Devin0xFFFFFF/angular2_dart)
 - [Checkers in Java](http://math.hws.edu/eck/cs124/javanotes3/source/Checkers.java)
 - [HTML5 DOM Events](http://www.w3schools.com/jsref/dom_obj_event.asp)
+- [Reference Online Checkers](https://www.mathsisfun.com/games/checkers-2.html)
 
-##Rules
+##Rules of Checkers (Draughts)
 
 1. Checkers is played by two players. Each player begins the game with 12 colored discs. (Typically, one set of pieces is black and the other red.)
 2. The board consists of 64 squares, alternating between 32 dark and 32 light squares. It is positioned so that each player has a light square on the right side corner closest to him or her.
