@@ -57,7 +57,7 @@ class CheckersService
       winner = currentPlayer == player1 ? player2 : player1;
     }
 
-    if(versusAI && currentPlayer == player1)
+    if(!gameOver && versusAI && currentPlayer == player1)
     {
       _aiTimer = new Timer(new Duration(seconds: 1), (){
         _makeAIMove();
@@ -81,7 +81,7 @@ class CheckersService
   _makeAIMove() async
   {
     //Determine the move the AI will take
-    Move move = CheckersAI.determineMove(currentPlayer, possibleCurrentMoves, board);
+    Move move = CheckersAI.determineMove(player1, player2, board);
 
     //after a duration, highlight the move origin
     aiSelectOriginTimer = new Timer(new Duration(milliseconds: 250), (){
@@ -95,8 +95,15 @@ class CheckersService
           board.at(move.destination).selected = false;
 
           board.movePiece(move);
-          //TODO: check for continue jump
-          takeTurn();
+          //check for another jump
+          if(attemptContinueJumps(move))
+          {
+            _makeAIMove();
+          }
+          else
+          {
+            takeTurn();
+          }
         });
       });
     });
