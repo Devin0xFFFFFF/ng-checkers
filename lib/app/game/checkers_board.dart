@@ -60,13 +60,13 @@ class CheckersBoard {
   bool canMove(BoardSquare originSquare, BoardSquare targetSquare, Move move)
   {
     bool result = false;
-    bool madeJump = false;
+    //bool madeJump = false;
 
     Player player = originSquare.piece.owner;
 
-    bool king = originSquare.piece.king;
+    //bool king = originSquare.piece.king;
 
-    int direction = player.color == "blue" ? 1 : -1;
+    //int direction = player.color == "blue" ? 1 : -1;
 
     int deltaR = move.destination.row - move.origin.row;
     int deltaC = move.destination.col - move.origin.col;
@@ -79,19 +79,22 @@ class CheckersBoard {
     if(distanceC == 2)
     {
       //do jump first, then move
-      int jumpedR = move.destination.row - (deltaR/2).toInt();
-      int jumpedC = move.destination.col - (deltaC/2).toInt();
+      int jumpedR = move.destination.row - (deltaR ~/ 2);
+      int jumpedC = move.destination.col - (deltaC ~/ 2);
       jumped = board[jumpedR][jumpedC];
 
       if(jumped == null || (jumped.occupied() && jumped.piece.owner == player))
       {
         return false; //cannot move more than 1 tile without jumping
       }
+      else if(!jumped.occupied())
+      {
+        print('');
+        throw new Exception('Attempting to Jump Unoccupied Square!');
+      }
       else if(distanceC == distanceR) //make sure we are moving diagonally
       {
-        //jumped.piece.owner.pieces--; //decrement player piece pool for win condition
         jumped.piece = null; //remove piece from game
-        madeJump = true;
       }
     }
 
@@ -242,7 +245,7 @@ class CheckersBoard {
     if(onBoard(rJump, cJump) && !board[rJump][cJump].occupied())
     {
       //check if intermediate square is occupied and is not the same colored piece as ours
-      BoardSquare square = board[pos.row + (deltaR/2).toInt()][pos.col + (deltaC/2).toInt()];
+      BoardSquare square = board[pos.row + (deltaR ~/ 2)][pos.col + (deltaC ~/ 2)];
       if(square.occupied() && square.piece.owner != board[pos.row][pos.col].piece.owner)
       {
         positions.add(new Position(rJump, cJump));
@@ -304,6 +307,22 @@ class CheckersBoard {
 
     return cloneBoard;
   }
+
+  toString()
+  {
+    String result = '';
+
+    for(int r = 0; r < BOARD_SIZE; r++)
+    {
+      for(int c = 0; c < BOARD_SIZE; c++)
+      {
+        result += board[r][c].toString();
+      }
+      result += "\n";
+    }
+
+    return result;
+  }
 }
 
 class BoardSquare
@@ -320,6 +339,19 @@ class BoardSquare
   bool occupied()
   {
     return piece != null;
+  }
+
+  toString()
+  {
+    if(occupied())
+    {
+      String letter = piece.color.substring(0,1);
+      return '[${piece.king ? letter.toUpperCase() : letter.toLowerCase()}]';
+    }
+    else
+    {
+      return '[-]';
+    }
   }
 }
 
@@ -377,6 +409,11 @@ class Move
   bool equals(Move other)
   {
     return origin.equals(other.origin) && destination.equals(other.destination);
+  }
+
+  bool isJump()
+  {
+    return destination.col - origin.col > 1;
   }
 
   toString()

@@ -1,6 +1,5 @@
 import 'package:ng_checkers/app/game/checkers_board.dart';
 import 'package:ng_checkers/app/game/player.dart';
-import 'dart:math';
 
 class CheckersAI
 {
@@ -50,11 +49,14 @@ class CheckersAI
     double bestEvaluation = 0.0;
     double currentEvaluation = 0.0;
 
+    //if you make a jump, take a piece
+    double multiplier = move.isJump() ? 2.0 : 1.0;
+
     for(int i = 0; i < possibleMoves.length; i++)
     {
       CheckersBoard nextBoard = board.clone();
       //board.movePiece(possibleMoves[i]);
-      currentEvaluation = 1/currentDepth * (1 + signFactor * evaluateBoard(player, nextBoard)) + recursivelyEvaluate(opponent, player, possibleMoves[i], nextBoard, -signFactor, currentDepth + 1, maxDepth);
+      currentEvaluation = multiplier/currentDepth * (1 + signFactor * evaluateBoard(player, nextBoard)) + recursivelyEvaluate(opponent, player, possibleMoves[i], nextBoard, -signFactor, currentDepth + 1, maxDepth);
       print("${player} : ${move} : ${currentEvaluation}");
 
       if(currentEvaluation > bestEvaluation)
@@ -115,25 +117,4 @@ class CheckersAI
 
     return [];
   }
-//
-//  static Move recursivelyDetermineMove(Player player, Player opponent, CheckersBoard board, int signFactor, int currentDepth, int maxDepth)
-//  {
-//    Moves moves = board.getPossibleMoves(player);
-//    List<Move> possibleMoves = moves.hasJumps() ? moves.jumps : moves.moves;
-//
-//    int bestMove = 0;
-//    double bestEvaluation = 0.0;
-//    double currentEvaluation = 0.0;
-//
-//    for(int i = 0; i < possibleMoves.length; i++) {
-//      currentEvaluation = 1/currentDepth * signFactor * getMoveValue(player, possibleMoves[i], board) + recursiveBoardValue(opponent, player);
-//
-//      if (currentEvaluation > bestEvaluation) {
-//        bestEvaluation = currentEvaluation;
-//        bestMove = i;
-//      }
-//    }
-//
-//    return possibleMoves[bestMove];
-//  }
 }
