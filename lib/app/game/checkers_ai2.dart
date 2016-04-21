@@ -157,19 +157,19 @@ class CheckersAI2
     CheckersBoard board = sourceBoard.clone();
     CheckersBoard afterJumpBoard;
 
-    bool updated;
+    int jumpCount = 0;
 
     //keep making a jump, each time selecting the best of the possible jumps
     while(availableJumps.isNotEmpty)
     {
-      updated = false;
+      jumpCount++;
       for(int i = 0; i < availableJumps.length; i++)
       {
         //clone board, make jump, evaluate
         afterJumpBoard = board.clone();
         if(!afterJumpBoard.movePiece(availableJumps[i]))
         {
-          afterJumpBoard.movePiece(availableJumps[i]);
+          //afterJumpBoard.movePiece(availableJumps[i]);
           throw new Exception('Failed to Continue Jump!');
         }
         jumpValue = evaluateBoard(player, afterJumpBoard);
@@ -177,7 +177,6 @@ class CheckersAI2
         //continuously select the best board
         if(jumpValue > bestJumpValue)
         {
-          updated = true;
           bestJumpValue = jumpValue;
           bestJumpBoard = afterJumpBoard;
           bestJumpPosition = availableJumps[i].destination;

@@ -8,6 +8,8 @@ This project is an implementation of the game of checkers, also known as draught
 
 It supports both local versus play and a local versus AI mode.
 
+I am working towards adding a websockets based multiplayer mode.
+
 ##Running This Project
 
 To run this project you will require a copy of the Dart SDK, which includes the pub package manager. The Download Page contains OS specific instructions.
