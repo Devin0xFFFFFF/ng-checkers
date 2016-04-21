@@ -1,10 +1,10 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:angular2/angular2.dart';
+import 'package:ng_checkers/app/game/checkers_ai.dart';
 import 'package:ng_checkers/app/game/checkers_board.dart';
 import 'package:ng_checkers/app/game/player.dart';
-import 'dart:math';
-import 'dart:async';
-import 'package:ng_checkers/app/game/checkers_ai.dart';
-import 'package:ng_checkers/app/game/checkers_ai2.dart';
 
 @Injectable()
 class CheckersService
@@ -82,7 +82,7 @@ class CheckersService
   _makeAIMove() async
   {
     //Determine the move the AI will take
-    Move move = CheckersAI2.determineMove(player1, player2, board);
+    Move move = CheckersAI.determineMove(player1, player2, board);
 
     //after a duration, highlight the move origin
     aiSelectOriginTimer = new Timer(new Duration(milliseconds: 250), (){
