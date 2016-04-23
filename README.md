@@ -12,7 +12,21 @@ I am working towards adding a websockets based multiplayer mode.
 
 ##Running This Project
 
-To run this project you will require a copy of the Dart SDK, which includes the pub package manager. The Download Page contains OS specific instructions.
+There are two ways of running this project: Docker or straight Dart
+
+###Docker
+
+For running the app with docker and serving it via Nginx, you will need to have an up to date version of Docker and Docker Compose.
+
+You can then 'docker-compose build' and 'docker-compose up -d' in this directory to run the app.
+
+It should be running by default on 'localhost:80'
+
+If you wish to terminate the app, use 'docker-compose kill'
+
+###Dart
+
+To run this project with Dart you will require a copy of the Dart SDK, which includes the pub package manager. The [Download Page](https://www.dartlang.org/downloads/) contains OS specific instructions.
 
 First, make sure to run pub get / pub upgrade in the project root to retrieve packages.
 

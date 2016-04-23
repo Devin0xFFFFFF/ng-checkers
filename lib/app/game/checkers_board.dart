@@ -89,7 +89,6 @@ class CheckersBoard {
       }
       else if(!jumped.occupied())
       {
-        print('');
         throw new Exception('Attempting to Jump Unoccupied Square!');
       }
       else if(distanceC == distanceR) //make sure we are moving diagonally
