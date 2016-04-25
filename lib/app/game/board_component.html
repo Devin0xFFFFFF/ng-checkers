@@ -3,7 +3,7 @@
     <h3 *ngIf="checkersService.possibleCurrentMoves.hasJumps() && !continueJump">{{checkersService.currentPlayer}} Must Jump!</h3>
     <h3 *ngIf="checkersService.gameOver">Game Over! {{checkersService.winner}} Wins!</h3>
 </div>
-<div class="container well">
+<div class="container">
     <div>
         <div class="row" *ngFor="#row of checkersService.board.board; #r = index">
             <div class="col-sm-1"
