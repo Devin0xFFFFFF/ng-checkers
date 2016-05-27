@@ -1,0 +1,13 @@
+nginx:
+  ports:
+       - "80:80"
+   build: ./nginx
+  links:
+      - dartapp:dartapp
+  volumes_from:
+      - dartapp
+dartapp:
+    build: .
+    entrypoint: "true"
+    volumes:
+        - /usr/share/nginx/angular2
